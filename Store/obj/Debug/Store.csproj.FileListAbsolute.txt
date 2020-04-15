@@ -23,3 +23,11 @@ C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.pdb
 C:\Users\KoKo\Source\Repos\iulian098\Store\Store\bin\Debug\Store.exe.config
 C:\Users\KoKo\Source\Repos\iulian098\Store\Store\bin\Debug\Store.exe
 C:\Users\KoKo\Source\Repos\iulian098\Store\Store\bin\Debug\Store.pdb
+C:\Users\KoKo\Source\Repos\iulian098\Store\Store\bin\Debug\MySql.Data.dll
+C:\Users\KoKo\Source\Repos\iulian098\Store\Store\bin\Debug\Google.Protobuf.dll
+C:\Users\KoKo\Source\Repos\iulian098\Store\Store\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\KoKo\Source\Repos\iulian098\Store\Store\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\KoKo\Source\Repos\iulian098\Store\Store\bin\Debug\Renci.SshNet.dll
+C:\Users\KoKo\Source\Repos\iulian098\Store\Store\bin\Debug\MySql.Data.xml
+C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.csproj.CopyComplete
+C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.CartForm.resources

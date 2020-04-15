@@ -12,9 +12,25 @@ namespace Store
 {
     public partial class RegisterForm : Form
     {
+        Database db = new Database();
         public RegisterForm()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(Username.Text == "" || Password.Text == "" || Email.Text == "" || Address.Text == "")
+            {
+                MessageBox.Show("Please fill all fields.");
+                return;
+            }
+
+            db.Register(Username.Text, Password.Text, Email.Text, Address.Text);
+
+            MessageBox.Show("Now you can login");
+
+            this.Close();
         }
     }
 }

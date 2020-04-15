@@ -81,6 +81,132 @@ namespace Store
 
         #endregion
 
+        #region Login/Register
+
+        public void Register(string username, string password, string email, string address){
+
+            string query = "INSERT INTO users (username, password, email, address) VALUES('" + username + "', '" + password + "', '" + email + "', '" + address + "')";
+
+            if (checkUsername(username, email))
+            {
+
+                //open connection
+                if (this.OpenConnection() == true)
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                    cmd.ExecuteNonQuery();
+
+                    this.CloseConnection();
+                }
+
+            }
+
+        }
+
+        public bool Login(string username, string password)
+        {
+            string pwd="";
+
+            string query = "SELECT * FROM users WHERE username='" + username + "'";
+
+            if (checkUsername(username))
+            {
+                if (this.OpenConnection() == true)
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        pwd = reader["password"] + "";
+                    }
+
+                    reader.Close();
+
+                    this.connection.Close();
+                }
+            }
+
+            if(password == pwd)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public bool checkUsername(string username)
+        {
+            int count=0;
+            string query = "SELECT COUNT(*) FROM users WHERE username='" + username + "'";
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                count = int.Parse(cmd.ExecuteScalar() + "");
+
+                this.CloseConnection();
+
+            }
+            
+            if(count == 0)
+            {
+                MessageBox.Show("Username does not exist");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public bool checkUsername(string username, string email)
+        {
+            int count = 0;
+            string query = "SELECT COUNT(*) FROM users WHERE username='" + username + "'";
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                count = int.Parse(cmd.ExecuteScalar() + "");
+
+                if (count != 0)
+                {
+                    DuplicateUsername();
+                    return false;
+                }
+
+                query = "SELECT COUNT(*) FROM users WHERE email='" + email + "'";
+                cmd = new MySqlCommand(query, connection);
+                count = int.Parse(cmd.ExecuteScalar() + "");
+
+                if (count != 0)
+                {
+                    DuplicateUsername();
+                    return false;
+                }
+
+                this.CloseConnection();
+
+                return true;
+
+            }
+
+            return false;
+        }
+
+        void DuplicateUsername()
+        {
+            MessageBox.Show("Username/Email already exist");
+            this.CloseConnection();
+        }
+
+        #endregion
+
         #region GetItems
 
         public List<string>[] GetItems()

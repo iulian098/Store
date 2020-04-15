@@ -10,6 +10,8 @@ namespace Store
 {
     class Order
     {
+        public Form1 mainForm;
+
         float TopMargin = 3f;
         float LeftMargin = 3f;
         int PanelX = 125, PanelY = 150;
@@ -63,25 +65,55 @@ namespace Store
             Console.WriteLine("Max items per row:" + MaxRowItems);
         }
 
-        public void AddItems(Panel panel)
+        public void AddItems(Panel panel, string name, string image, string price)
         {
             Button btn = new Button();
             PictureBox img = new PictureBox();
+            Label _name = new Label();
+            Label _price = new Label();
             
+            //Add button
             btn.Text = "Add to cart";
-            //btn.BackColor = Color.LightGray;
             btn.Size = new Size(panel.Size.Width/2, 25);
             btn.Anchor = AnchorStyles.Bottom;
             btn.Location = new Point((panel.Width/2)-(btn.Width/2),panel.Height - btn.Height);
+            btn.Click += delegate(object sender, EventArgs e) {
+                Items itm = new Items(name, price, image);
+                mainForm.CartItems.Add(itm);
+                Console.WriteLine(itm.getName() + " price:" + itm.getPrice() + " image:" + itm.getImage());
+                Console.WriteLine("Items in cart:" + mainForm.CartItems.Count());
+            };
 
+            //Add image
             img.Anchor = AnchorStyles.Top;
-            img.ImageLocation = @"C:\Users\KoKo\Pictures\Uplay\The Crew\The Crew2020-3-1-18-46-28.jpg";
+            img.ImageLocation = image;
             img.Size = new Size(panel.Width/2, panel.Height - btn.Height);
             img.Location = new Point(panel.Width/2 - img.Width/2, 0);
             img.SizeMode = PictureBoxSizeMode.StretchImage;
 
+            //Add name
+            _name.Size = new Size(panel.Width / 2, 15);
+            _name.Location = new Point(panel.Width / 2 - _name.Width / 2, panel.Height - 60);
+            _name.Text = name;
+            _name.TextAlign = ContentAlignment.MiddleCenter;
+            _name.Anchor = AnchorStyles.Bottom;
+
+            //Add price
+            _price.Size = new Size(panel.Width / 2, 15);
+            _price.Location = new Point(panel.Width / 2 - _name.Width / 2, panel.Height - 40);
+            _price.Text = "Price:" + price;
+            _price.TextAlign = ContentAlignment.MiddleCenter;
+            _price.Anchor = AnchorStyles.Bottom;
+
+            panel.Controls.Add(_price);
+            panel.Controls.Add(_name);
             panel.Controls.Add(img);
             panel.Controls.Add(btn);
+        }
+
+        void ButtonEvent(object sender, EventArgs e)
+        {
+            
         }
 
         void Reset()

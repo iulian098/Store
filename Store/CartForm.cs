@@ -12,9 +12,32 @@ namespace Store
 {
     public partial class CartForm : Form
     {
+        List<Items> items = new List<Items>();
+        Cart cart = new Cart();
         public CartForm()
         {
             InitializeComponent();
         }
+
+        private void CartForm_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        public void SetItems(List<Items> list)
+        {
+            items = list;
+            Console.WriteLine("Items in cart : " + items.Count);
+            cart.Init(items, this, panel1);
+
+            cart.AddItems();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        
     }
 }
