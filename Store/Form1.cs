@@ -68,7 +68,16 @@ namespace Store
         public void LoggedIn(string _username)
         {
             username = _username;
-            User.Text = "User: " + _username;
+
+            if (db.CheckAdmin(_username))
+            {
+                User.Text = "User: " + _username + "(Admin)";
+                AdminBtn.Visible = true;
+            }
+            else
+            {
+                User.Text = "User: " + _username;
+            }
             User.Visible = true;
             LoginBtn.Visible = false;
             LoginBtn.Enabled = false;
@@ -93,6 +102,7 @@ namespace Store
             LoginBtn.Visible = true;
             LoginBtn.Enabled = true;
             LogoutBtn.Visible = false;
+            AdminBtn.Visible = false;
         }
 
         private void CartBtn_Click(object sender, EventArgs e)
@@ -100,6 +110,12 @@ namespace Store
             CartForm cart = new CartForm();
             cart.Show();
             cart.SetItems(CartItems, this);
+        }
+
+        private void AdminBtn_Click(object sender, EventArgs e)
+        {
+            AdminPanel admin = new AdminPanel();
+            admin.Show();
         }
     }
 }

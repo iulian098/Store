@@ -83,7 +83,7 @@ namespace Store
 
         #region Login/Register
 
-        public void Register(string username, string password, string email, string address){
+        public void Register(string username, string password, string email, string address) {
 
             string query = "INSERT INTO users (username, password, email, address) VALUES('" + username + "', '" + password + "', '" + email + "', '" + address + "')";
 
@@ -106,7 +106,7 @@ namespace Store
 
         public bool Login(string username, string password)
         {
-            string pwd="";
+            string pwd = "";
 
             string query = "SELECT * FROM users WHERE username='" + username + "'";
 
@@ -128,7 +128,7 @@ namespace Store
                 }
             }
 
-            if(password == pwd)
+            if (password == pwd)
             {
                 return true;
             }
@@ -141,7 +141,7 @@ namespace Store
 
         public bool checkUsername(string username)
         {
-            int count=0;
+            int count = 0;
             string query = "SELECT COUNT(*) FROM users WHERE username='" + username + "'";
 
             if (this.OpenConnection() == true)
@@ -152,8 +152,8 @@ namespace Store
                 this.CloseConnection();
 
             }
-            
-            if(count == 0)
+
+            if (count == 0)
             {
                 MessageBox.Show("Username does not exist");
                 return false;
@@ -207,6 +207,108 @@ namespace Store
 
         #endregion
 
+
+        #region admin
+
+        public void InitializeAdmin()
+        {
+            server = "localhost";
+            database = "store";
+            user = "admin";
+            password = "123456";
+
+            string connectionString;
+            connectionString = "SERVER=" + server + ";" + "DATABASE=" +
+                                database + ";" + "UID=" + user + ";" + "PWD=" + password + ";PORT=3306";
+
+            connection = new MySqlConnection(connectionString);
+        }
+
+
+        public bool CheckAdmin(string username)
+        {
+
+            int count = 0;
+            string query = "SELECT COUNT(*) FROM admins WHERE username='" + username + "'";
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                count = int.Parse(cmd.ExecuteScalar() + "");
+
+                this.CloseConnection();
+
+                if (count != 0)
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
+        public List<Items> GetAdminItems()
+        {
+            List<Items> items = new List<Items>();
+
+            string query = "SELECT * from items";
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Items item = new Items(reader["name"] + "", reader["price"] + "", reader["image"] + "", reader["quantity"] + "", reader["id"] + "");
+                    items.Add(item);
+                }
+
+                reader.Close();
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+
+                return items;
+            }
+            else
+            {
+                return items;
+            }
+        }
+
+        public void UpdateItems(string id, string name, string price, string stock)
+        {
+            string query = "UPDATE items set name='" + name + "', price=" + price + ", quantity=" + stock + " WHERE id=" + id;
+            //open connection
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+            }
+        }
+
+        public void RemoveItems(string id)
+        {
+            string query = "DELETE FROM items WHERE id=" + id;
+            //open connection
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+            }
+        }
+
+        #endregion
+
         #region GetItems
 
         public List<string>[] GetItems()
@@ -248,7 +350,6 @@ namespace Store
                 return items;
             }
         }
+        #endregion
     }
-
-    #endregion
 }

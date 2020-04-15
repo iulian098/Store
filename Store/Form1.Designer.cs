@@ -33,6 +33,7 @@
             this.LoginBtn = new System.Windows.Forms.Button();
             this.User = new System.Windows.Forms.Label();
             this.LogoutBtn = new System.Windows.Forms.Button();
+            this.AdminBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MainPanel
@@ -88,18 +89,30 @@
             this.LogoutBtn.Visible = false;
             this.LogoutBtn.Click += new System.EventHandler(this.LogoutBtn_Click);
             // 
+            // AdminBtn
+            // 
+            this.AdminBtn.Location = new System.Drawing.Point(653, 12);
+            this.AdminBtn.Name = "AdminBtn";
+            this.AdminBtn.Size = new System.Drawing.Size(75, 23);
+            this.AdminBtn.TabIndex = 5;
+            this.AdminBtn.Text = "Admin panel";
+            this.AdminBtn.UseVisualStyleBackColor = true;
+            this.AdminBtn.Visible = false;
+            this.AdminBtn.Click += new System.EventHandler(this.AdminBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 526);
+            this.Controls.Add(this.AdminBtn);
             this.Controls.Add(this.LogoutBtn);
             this.Controls.Add(this.User);
             this.Controls.Add(this.LoginBtn);
             this.Controls.Add(this.CartBtn);
             this.Controls.Add(this.MainPanel);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Store";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
             this.ResumeLayout(false);
@@ -114,6 +127,7 @@
         private System.Windows.Forms.Button LoginBtn;
         private System.Windows.Forms.Label User;
         private System.Windows.Forms.Button LogoutBtn;
+        private System.Windows.Forms.Button AdminBtn;
     }
 }
 
