@@ -41,6 +41,7 @@ namespace Store
             itemName.Text = selectedItem.getName();
             Price.Text = selectedItem.getPrice();
             Stock.Text = selectedItem.getQuantity();
+            ImageURL.Text = selectedItem.getImage();
         }
 
         public void RefreshItems()
@@ -54,13 +55,35 @@ namespace Store
                 listBox1.Items.Add("ID: " + item.getID() + " | Name: " + item.getName() + " | Stock: " + item.getQuantity() + " | Price: " + item.getPrice());
             }
 
-            listBox1.SelectedIndex = selectedIndex;
+            if (listBox1.Items.Count - 1 >= selectedIndex)
+                listBox1.SelectedIndex = selectedIndex;
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             db.RemoveItems(selectedItem.getID());
             RefreshItems();
+        }
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            AddProduct product = new AddProduct();
+            product.admin = this;
+            product.Show();
+        }
+
+        private void OnlyNumbers(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

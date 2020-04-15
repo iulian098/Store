@@ -61,7 +61,7 @@ namespace Store
                 Label price = new Label();
 
                 price.Text = "Price: " + item.getPrice();
-                price.Size = new Size(50, 15);
+                price.Size = new Size(100, 15);
                 price.Location = new Point(name.Location.X, 35);
 
                 //Configure button

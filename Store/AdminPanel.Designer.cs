@@ -38,6 +38,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
+            this.AddBtn = new System.Windows.Forms.Button();
+            this.ImageURL = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBox1
@@ -86,6 +89,7 @@
             this.Price.Name = "Price";
             this.Price.Size = new System.Drawing.Size(100, 20);
             this.Price.TabIndex = 5;
+            this.Price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
             // 
             // label3
             // 
@@ -104,6 +108,7 @@
             this.Stock.Name = "Stock";
             this.Stock.Size = new System.Drawing.Size(100, 20);
             this.Stock.TabIndex = 7;
+            this.Stock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
             // 
             // label4
             // 
@@ -137,11 +142,43 @@
             this.DeleteBtn.UseVisualStyleBackColor = true;
             this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
+            // AddBtn
+            // 
+            this.AddBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddBtn.Location = new System.Drawing.Point(624, 419);
+            this.AddBtn.Name = "AddBtn";
+            this.AddBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddBtn.TabIndex = 10;
+            this.AddBtn.Text = "Add";
+            this.AddBtn.UseVisualStyleBackColor = true;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
+            // 
+            // ImageURL
+            // 
+            this.ImageURL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ImageURL.Location = new System.Drawing.Point(82, 447);
+            this.ImageURL.Name = "ImageURL";
+            this.ImageURL.Size = new System.Drawing.Size(224, 20);
+            this.ImageURL.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 450);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Image URL:";
+            // 
             // AdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(835, 484);
+            this.Controls.Add(this.ImageURL);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Stock);
@@ -173,5 +210,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button DeleteBtn;
+        private System.Windows.Forms.Button AddBtn;
+        private System.Windows.Forms.TextBox ImageURL;
+        private System.Windows.Forms.Label label5;
     }
 }

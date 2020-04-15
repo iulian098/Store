@@ -32,3 +32,4 @@ C:\Users\KoKo\Source\Repos\iulian098\Store\Store\bin\Debug\MySql.Data.xml
 C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.csproj.CopyComplete
 C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.CartForm.resources
 C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.AdminPanel.resources
+C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.AddProduct.resources

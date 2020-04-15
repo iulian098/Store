@@ -76,7 +76,7 @@
             this.Controls.Add(this.button1);
             this.MinimumSize = new System.Drawing.Size(323, 438);
             this.Name = "CartForm";
-            this.Text = "CartForm";
+            this.Text = "Cart";
             this.Load += new System.EventHandler(this.CartForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

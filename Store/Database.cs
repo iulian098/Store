@@ -279,6 +279,20 @@ namespace Store
             }
         }
 
+        public void AddItem(string id, string name, string price, string stock, string image)
+        {
+            string query = "INSERT INTO items VALUES(" + id + ", '" + name + "', " + price + ", '" + image + "', " + stock + ")";
+            //open connection
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+            }
+        }
+
         public void UpdateItems(string id, string name, string price, string stock)
         {
             string query = "UPDATE items set name='" + name + "', price=" + price + ", quantity=" + stock + " WHERE id=" + id;
