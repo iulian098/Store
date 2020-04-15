@@ -45,7 +45,7 @@ namespace Store
                 p.Name = "Item" + i;
 
                 panels.Add(p);
-                o.AddButtons(p);
+                o.AddItems(p);
             }
             o.OrderPanels(panels);
         }

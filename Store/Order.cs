@@ -31,10 +31,8 @@ namespace Store
                 Random r = new Random();
                 
                 p.Size = new Size(PanelX, PanelY);
-                Color newColor = Color.FromArgb(r.Next(0,255), r.Next(0,255), r.Next(0,255));
 
                 p.Size = new Size(PanelX, PanelY);
-                p.BackColor = newColor;
 
                 if(ItemCount == MaxRowItems)
                 {
@@ -65,15 +63,24 @@ namespace Store
             Console.WriteLine("Max items per row:" + MaxRowItems);
         }
 
-        public void AddButtons(Panel panel)
+        public void AddItems(Panel panel)
         {
             Button btn = new Button();
-
+            PictureBox img = new PictureBox();
+            
             btn.Text = "Add to cart";
-            btn.BackColor = Color.Gray;
-            btn.Size = new Size(panel.Size.Width, 25);
+            //btn.BackColor = Color.LightGray;
+            btn.Size = new Size(panel.Size.Width/2, 25);
             btn.Anchor = AnchorStyles.Bottom;
-            btn.Location = new Point((panel.Width/2)-(btn.Width/2),panel.Height - btn.Size.Height);
+            btn.Location = new Point((panel.Width/2)-(btn.Width/2),panel.Height - btn.Height);
+
+            img.Anchor = AnchorStyles.Top;
+            img.ImageLocation = @"C:\Users\KoKo\Pictures\Uplay\The Crew\The Crew2020-3-1-18-46-28.jpg";
+            img.Size = new Size(panel.Width/2, panel.Height - btn.Height);
+            img.Location = new Point(panel.Width/2 - img.Width/2, 0);
+            img.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            panel.Controls.Add(img);
             panel.Controls.Add(btn);
         }
 
