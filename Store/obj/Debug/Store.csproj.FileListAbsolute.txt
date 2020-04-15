@@ -1,0 +1,12 @@
+C:\Users\KoKo\source\repos\Store\Store\bin\Debug\Store.exe.config
+C:\Users\KoKo\source\repos\Store\Store\bin\Debug\Store.exe
+C:\Users\KoKo\source\repos\Store\Store\bin\Debug\Store.pdb
+C:\Users\KoKo\source\repos\Store\Store\obj\Debug\Store.csprojAssemblyReference.cache
+C:\Users\KoKo\source\repos\Store\Store\obj\Debug\Store.Form1.resources
+C:\Users\KoKo\source\repos\Store\Store\obj\Debug\Store.Properties.Resources.resources
+C:\Users\KoKo\source\repos\Store\Store\obj\Debug\Store.csproj.GenerateResource.cache
+C:\Users\KoKo\source\repos\Store\Store\obj\Debug\Store.csproj.CoreCompileInputs.cache
+C:\Users\KoKo\source\repos\Store\Store\obj\Debug\Store.exe
+C:\Users\KoKo\source\repos\Store\Store\obj\Debug\Store.pdb
+C:\Users\KoKo\source\repos\Store\Store\obj\Debug\Store.LoginForm.resources
+C:\Users\KoKo\source\repos\Store\Store\obj\Debug\Store.RegisterForm.resources
