@@ -75,6 +75,16 @@ namespace Store
             LogoutBtn.Visible = true;
         }
 
+        public void RemoveFromCart(Items item)
+        {
+            CartItems.Remove(item);
+        }
+
+        public void CartNumber()
+        {
+            CartBtn.Text = "Cart(" + CartItems.Count + ")";
+        }
+
         private void LogoutBtn_Click(object sender, EventArgs e)
         {
             username = "";
@@ -89,7 +99,7 @@ namespace Store
         {
             CartForm cart = new CartForm();
             cart.Show();
-            cart.SetItems(CartItems);
+            cart.SetItems(CartItems, this);
         }
     }
 }

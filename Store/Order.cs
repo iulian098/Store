@@ -67,6 +67,7 @@ namespace Store
 
         public void AddItems(Panel panel, string name, string image, string price)
         {
+            //Create
             Button btn = new Button();
             PictureBox img = new PictureBox();
             Label _name = new Label();
@@ -82,6 +83,7 @@ namespace Store
                 mainForm.CartItems.Add(itm);
                 Console.WriteLine(itm.getName() + " price:" + itm.getPrice() + " image:" + itm.getImage());
                 Console.WriteLine("Items in cart:" + mainForm.CartItems.Count());
+                mainForm.CartNumber();
             };
 
             //Add image
@@ -105,6 +107,7 @@ namespace Store
             _price.TextAlign = ContentAlignment.MiddleCenter;
             _price.Anchor = AnchorStyles.Bottom;
 
+            //Add to panel
             panel.Controls.Add(_price);
             panel.Controls.Add(_name);
             panel.Controls.Add(img);

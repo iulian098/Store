@@ -12,6 +12,7 @@ namespace Store
 {
     public partial class CartForm : Form
     {
+        Form1 mainForm;
         List<Items> items = new List<Items>();
         Cart cart = new Cart();
         public CartForm()
@@ -24,13 +25,22 @@ namespace Store
             
         }
 
-        public void SetItems(List<Items> list)
+        public void SetItems(List<Items> list, Form1 f)
         {
             items = list;
             Console.WriteLine("Items in cart : " + items.Count);
-            cart.Init(items, this, panel1);
+            cart.Init(items, this, f, panel1);
+            SetTotalPrice(cart.GetTotalPrice());
+        }
 
-            cart.AddItems();
+        public void SetTotalPrice(int price)
+        {
+            TotalPrice.Text = "Total price: " + cart.GetTotalPrice();
+        }
+
+        public void RemoveItem(Items item)
+        {
+            items.Remove(item);
         }
 
         private void button1_Click(object sender, EventArgs e)

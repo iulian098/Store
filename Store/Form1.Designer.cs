@@ -49,11 +49,11 @@
             // CartBtn
             // 
             this.CartBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CartBtn.Location = new System.Drawing.Point(765, 12);
+            this.CartBtn.Location = new System.Drawing.Point(734, 12);
             this.CartBtn.Name = "CartBtn";
-            this.CartBtn.Size = new System.Drawing.Size(40, 23);
+            this.CartBtn.Size = new System.Drawing.Size(71, 23);
             this.CartBtn.TabIndex = 1;
-            this.CartBtn.Text = "Cart";
+            this.CartBtn.Text = "Cart(0)";
             this.CartBtn.UseVisualStyleBackColor = true;
             this.CartBtn.Click += new System.EventHandler(this.CartBtn_Click);
             // 
