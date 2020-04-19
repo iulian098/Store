@@ -13,20 +13,22 @@ namespace Store
         CartForm form;
         Form1 mainForm;
         Panel itemsContainer;
+        string username;
         float itemPanelHeight = 50;
 
         List<Items> items = new List<Items>();
         
-        public void Init(List<Items> list, CartForm cf, Form1 mf, Panel container)
+        public void Init(List<Items> list, CartForm cf, Form1 mf, Panel container, string _username)
         {
             items = list;
             form = cf;
             mainForm = mf;
             itemsContainer = container;
-            Console.WriteLine("Get " + items.Count + " from " + list.Count + " items");
+            username = _username;
             AddItems();
         }
 
+        //Create items
         public void AddItems()
         {
             int counter = 0;
@@ -95,7 +97,6 @@ namespace Store
 
 
                 counter++;
-                Console.WriteLine("Item " + item.getName() + " with price " + item.getPrice() + " image:" + item.getImage() +  " added");
             }
         }
 
@@ -110,5 +111,7 @@ namespace Store
 
             return price;
         }
+
+
     }
 }

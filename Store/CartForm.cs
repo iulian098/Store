@@ -13,8 +13,11 @@ namespace Store
     public partial class CartForm : Form
     {
         Form1 mainForm;
+        string username;
         List<Items> items = new List<Items>();
         Cart cart = new Cart();
+        Database db = new Database();
+        int userID;
         public CartForm()
         {
             InitializeComponent();
@@ -25,12 +28,14 @@ namespace Store
             
         }
 
-        public void SetItems(List<Items> list, Form1 f)
+        public void SetItems(List<Items> list, Form1 f, string _username)
         {
             items = list;
+            username = _username;
             Console.WriteLine("Items in cart : " + items.Count);
-            cart.Init(items, this, f, panel1);
+            cart.Init(list, this, f, panel1, _username);
             SetTotalPrice(cart.GetTotalPrice());
+            userID = db.getUserID(username);
         }
 
         public void SetTotalPrice(int price)
@@ -45,8 +50,18 @@ namespace Store
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string items_id = "";
+
+            for(int i = 0; i < items.Count; i++)
+            {
+                items_id += items[i].getID() + ",";
+            }
+
+            db.AddOrder(items_id, userID);
             this.Close();
         }
+
+
 
         
     }

@@ -79,6 +79,32 @@ namespace Store
 
         }
 
+        public int getUserID(string username)
+        {
+            int id=0;
+            string query = "SELECT * FROM users WHERE username='" + username + "';";
+
+            if (this.OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    id = int.Parse(reader["id"]+"");
+                }
+
+                reader.Close();
+                this.connection.Close();
+
+                return id;
+            }
+            else
+            {
+                return id;
+            }
+        }
+
         #endregion
 
         #region Login/Register
@@ -207,8 +233,7 @@ namespace Store
 
         #endregion
 
-
-        #region admin
+        #region Admin
 
         public void InitializeAdmin()
         {
@@ -321,6 +346,37 @@ namespace Store
             }
         }
 
+        public List<OrderItem> getOrders()
+        {
+            List<OrderItem> orders = new List<OrderItem>();
+
+            string query = "SELECT * from orders";
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    OrderItem item = new OrderItem(reader["id"] + "", reader["userid"] + "", reader["itemid"] + "");
+                    orders.Add(item);
+                }
+
+                reader.Close();
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+
+                return orders;
+            }
+            else
+            {
+                return orders;
+            }
+        }
+
         #endregion
 
         #region GetItems
@@ -364,6 +420,26 @@ namespace Store
                 return items;
             }
         }
+        #endregion
+
+        #region Orders
+
+        public void AddOrder(string items_id, int userid)
+        {
+            string query = "INSERT INTO orders (userid, itemid) VALUES(" + userid + ", '" + items_id + "')";
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+            }
+
+
+        }
+
         #endregion
     }
 }

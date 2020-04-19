@@ -16,13 +16,13 @@ namespace Store
 
         public List<Items> CartItems = new List<Items>();
 
-        string username;
+        public string username;
         Database db = new Database();
 
         private List<string>[] items;
 
         public List<Panel> panels = new List<Panel>();
-        Order o = new Order();
+        UIOrder o = new UIOrder();
 
         public Form1()
         {
@@ -31,7 +31,6 @@ namespace Store
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            items = db.GetItems();
             AddPanels();
             Console.WriteLine(panels.Count);
             o.mainForm = this;
@@ -43,8 +42,11 @@ namespace Store
             o.OrderPanels(panels);
         }
 
+
         void AddPanels()
         {
+            items = db.GetItems();
+
             for (int i = 0; i < items[0].Count; i++)
             {
                 Panel p = new Panel();
@@ -52,9 +54,16 @@ namespace Store
                 p.Name = "Item" + i;
 
                 panels.Add(p);
-                o.AddItems(p, items[1][i], items[3][i], items[2][i]);
+                o.AddItems(p,items[0][i], items[1][i], items[3][i], items[2][i], items[4][i]);
             }
             o.OrderPanels(panels);
+        }
+
+        void RefreshItems()
+        {
+            MainPanel.Controls.Clear();
+            panels.Clear();
+            AddPanels();
         }
 
         private void LoginBtn_Click(object sender, EventArgs e)
@@ -65,9 +74,12 @@ namespace Store
 
         }
 
+        #region Login/Logout
+
         public void LoggedIn(string _username)
         {
             username = _username;
+            Console.WriteLine("Username : " + username);
 
             if (db.CheckAdmin(_username))
             {
@@ -84,16 +96,6 @@ namespace Store
             LogoutBtn.Visible = true;
         }
 
-        public void RemoveFromCart(Items item)
-        {
-            CartItems.Remove(item);
-        }
-
-        public void CartNumber()
-        {
-            CartBtn.Text = "Cart(" + CartItems.Count + ")";
-        }
-
         private void LogoutBtn_Click(object sender, EventArgs e)
         {
             username = "";
@@ -105,17 +107,35 @@ namespace Store
             AdminBtn.Visible = false;
         }
 
+        #endregion
+
+        public void RemoveFromCart(Items item)
+        {
+            CartItems.Remove(item);
+        }
+
+        public void CartNumber()
+        {
+            CartBtn.Text = "Cart(" + CartItems.Count + ")";
+        }
+
+
         private void CartBtn_Click(object sender, EventArgs e)
         {
             CartForm cart = new CartForm();
             cart.Show();
-            cart.SetItems(CartItems, this);
+            cart.SetItems(CartItems, this, username);
         }
 
         private void AdminBtn_Click(object sender, EventArgs e)
         {
             AdminPanel admin = new AdminPanel();
             admin.Show();
+        }
+
+        private void RefreshBtn_Click(object sender, EventArgs e)
+        {
+            RefreshItems();
         }
     }
 }

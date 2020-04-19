@@ -34,6 +34,7 @@
             this.User = new System.Windows.Forms.Label();
             this.LogoutBtn = new System.Windows.Forms.Button();
             this.AdminBtn = new System.Windows.Forms.Button();
+            this.RefreshBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MainPanel
@@ -44,13 +45,13 @@
             this.MainPanel.AutoScroll = true;
             this.MainPanel.Location = new System.Drawing.Point(12, 41);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(793, 473);
+            this.MainPanel.Size = new System.Drawing.Size(561, 415);
             this.MainPanel.TabIndex = 0;
             // 
             // CartBtn
             // 
             this.CartBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CartBtn.Location = new System.Drawing.Point(734, 12);
+            this.CartBtn.Location = new System.Drawing.Point(502, 12);
             this.CartBtn.Name = "CartBtn";
             this.CartBtn.Size = new System.Drawing.Size(71, 23);
             this.CartBtn.TabIndex = 1;
@@ -91,7 +92,8 @@
             // 
             // AdminBtn
             // 
-            this.AdminBtn.Location = new System.Drawing.Point(653, 12);
+            this.AdminBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AdminBtn.Location = new System.Drawing.Point(340, 12);
             this.AdminBtn.Name = "AdminBtn";
             this.AdminBtn.Size = new System.Drawing.Size(75, 23);
             this.AdminBtn.TabIndex = 5;
@@ -100,17 +102,30 @@
             this.AdminBtn.Visible = false;
             this.AdminBtn.Click += new System.EventHandler(this.AdminBtn_Click);
             // 
+            // RefreshBtn
+            // 
+            this.RefreshBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.RefreshBtn.Location = new System.Drawing.Point(421, 12);
+            this.RefreshBtn.Name = "RefreshBtn";
+            this.RefreshBtn.Size = new System.Drawing.Size(75, 23);
+            this.RefreshBtn.TabIndex = 6;
+            this.RefreshBtn.Text = "Refresh";
+            this.RefreshBtn.UseVisualStyleBackColor = true;
+            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 526);
+            this.ClientSize = new System.Drawing.Size(585, 468);
+            this.Controls.Add(this.RefreshBtn);
             this.Controls.Add(this.AdminBtn);
             this.Controls.Add(this.LogoutBtn);
             this.Controls.Add(this.User);
             this.Controls.Add(this.LoginBtn);
             this.Controls.Add(this.CartBtn);
             this.Controls.Add(this.MainPanel);
+            this.MinimumSize = new System.Drawing.Size(416, 288);
             this.Name = "Form1";
             this.Text = "Store";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -128,6 +143,7 @@
         private System.Windows.Forms.Label User;
         private System.Windows.Forms.Button LogoutBtn;
         private System.Windows.Forms.Button AdminBtn;
+        private System.Windows.Forms.Button RefreshBtn;
     }
 }
 

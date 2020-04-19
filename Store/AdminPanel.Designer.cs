@@ -51,7 +51,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(12, 26);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(811, 381);
+            this.listBox1.Size = new System.Drawing.Size(781, 407);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -68,7 +68,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 424);
+            this.label2.Location = new System.Drawing.Point(12, 459);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 2;
@@ -77,7 +77,7 @@
             // itemName
             // 
             this.itemName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.itemName.Location = new System.Drawing.Point(56, 421);
+            this.itemName.Location = new System.Drawing.Point(56, 456);
             this.itemName.Name = "itemName";
             this.itemName.Size = new System.Drawing.Size(100, 20);
             this.itemName.TabIndex = 3;
@@ -85,7 +85,7 @@
             // Price
             // 
             this.Price.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Price.Location = new System.Drawing.Point(206, 421);
+            this.Price.Location = new System.Drawing.Point(206, 456);
             this.Price.Name = "Price";
             this.Price.Size = new System.Drawing.Size(100, 20);
             this.Price.TabIndex = 5;
@@ -95,7 +95,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(162, 424);
+            this.label3.Location = new System.Drawing.Point(162, 459);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 13);
             this.label3.TabIndex = 4;
@@ -104,7 +104,7 @@
             // Stock
             // 
             this.Stock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Stock.Location = new System.Drawing.Point(356, 421);
+            this.Stock.Location = new System.Drawing.Point(356, 456);
             this.Stock.Name = "Stock";
             this.Stock.Size = new System.Drawing.Size(100, 20);
             this.Stock.TabIndex = 7;
@@ -114,7 +114,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(312, 424);
+            this.label4.Location = new System.Drawing.Point(312, 459);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 6;
@@ -123,7 +123,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(462, 419);
+            this.button1.Location = new System.Drawing.Point(462, 454);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -134,7 +134,7 @@
             // DeleteBtn
             // 
             this.DeleteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteBtn.Location = new System.Drawing.Point(543, 419);
+            this.DeleteBtn.Location = new System.Drawing.Point(543, 454);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(75, 23);
             this.DeleteBtn.TabIndex = 9;
@@ -145,7 +145,7 @@
             // AddBtn
             // 
             this.AddBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddBtn.Location = new System.Drawing.Point(624, 419);
+            this.AddBtn.Location = new System.Drawing.Point(624, 454);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(75, 23);
             this.AddBtn.TabIndex = 10;
@@ -156,7 +156,7 @@
             // ImageURL
             // 
             this.ImageURL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ImageURL.Location = new System.Drawing.Point(82, 447);
+            this.ImageURL.Location = new System.Drawing.Point(82, 482);
             this.ImageURL.Name = "ImageURL";
             this.ImageURL.Size = new System.Drawing.Size(224, 20);
             this.ImageURL.TabIndex = 12;
@@ -165,7 +165,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 450);
+            this.label5.Location = new System.Drawing.Point(12, 485);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 11;
@@ -175,7 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(835, 484);
+            this.ClientSize = new System.Drawing.Size(805, 519);
             this.Controls.Add(this.ImageURL);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.AddBtn);
@@ -189,6 +189,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox1);
+            this.MinimumSize = new System.Drawing.Size(726, 244);
             this.Name = "AdminPanel";
             this.ShowIcon = false;
             this.Text = "Admin Panel";

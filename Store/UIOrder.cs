@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Store
 {
-    class Order
+    class UIOrder
     {
         public Form1 mainForm;
 
@@ -51,9 +51,9 @@ namespace Store
             Reset();
         }
 
+        //Get max items per row
         public void GetFromSize()
         {
-            
             Form form1 = Application.OpenForms["Form1"];
 
             FormX = form1.Size.Width;
@@ -65,7 +65,7 @@ namespace Store
             Console.WriteLine("Max items per row:" + MaxRowItems);
         }
 
-        public void AddItems(Panel panel, string name, string image, string price)
+        public void AddItems(Panel panel, string id, string name, string image, string price, string quantity)
         {
             //Create
             Button btn = new Button();
@@ -78,8 +78,9 @@ namespace Store
             btn.Size = new Size(panel.Size.Width/2, 25);
             btn.Anchor = AnchorStyles.Bottom;
             btn.Location = new Point((panel.Width/2)-(btn.Width/2),panel.Height - btn.Height);
-            btn.Click += delegate(object sender, EventArgs e) {
-                Items itm = new Items(name, price, image);
+
+            btn.Click += delegate(object sender, EventArgs e) { //Button function
+                Items itm = new Items(id, name, price, image);
                 mainForm.CartItems.Add(itm);
                 Console.WriteLine(itm.getName() + " price:" + itm.getPrice() + " image:" + itm.getImage());
                 Console.WriteLine("Items in cart:" + mainForm.CartItems.Count());

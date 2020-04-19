@@ -9,37 +9,48 @@ namespace Store
     public class Items
     {
         string _name, _price, _image, _quantity, _id;
+
         public Items(string name, string price, string image)
         {
-            _name = name;
-            _price = price;
-            _image = image;
+            this._name = name;
+            this._price = price;
+            this._image = image;
         }
 
-        public Items(string name, string price, string image, string q, string id)
+        public Items(string id, string name, string price, string image)
         {
-            _id = id;
-            _quantity = q;
-            _name = name;
-            _price = price;
-            _image = image;
+            this._name = name;
+            this._price = price;
+            this._image = image;
+            this._id = id;
         }
+
+        public Items(string id, string name, string price, string image, string q)
+        {
+            this._id = id;
+            this._quantity = q;
+            this._name = name;
+            this._price = price;
+            this._image = image;
+        }
+
+
         public string getName()
         {
-            return _name;
+            return this._name;
         }
 
         public string getPrice()
         {
-            return _price;
+            return this._price;
         }
         public string getImage()
         {
-            return _image;
+            return this._image;
         }
         public string getQuantity()
         {
-            return _quantity;
+            return this._quantity;
         }
 
         public string getID()
