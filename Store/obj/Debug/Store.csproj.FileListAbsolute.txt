@@ -33,3 +33,7 @@ C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.csproj.CopyComp
 C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.CartForm.resources
 C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.AdminPanel.resources
 C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.AddProduct.resources
+C:\Users\KoKo\source\repos\iulian098\Store\Store\bin\Debug\Database.mdf
+C:\Users\KoKo\source\repos\iulian098\Store\Store\bin\Debug\Database_log.ldf
+C:\Users\KoKo\source\repos\iulian098\Store\Store\obj\Debug\Store.ItemsPanel.resources
+C:\Users\KoKo\source\repos\iulian098\Store\Store\obj\Debug\Store.UsersPanel.resources

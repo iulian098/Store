@@ -12,7 +12,7 @@ namespace Store
 {
     public partial class AddProduct : Form
     {
-        public AdminPanel admin;
+        public ItemsPanel admin;
 
         Database db = new Database();
         List<Items> items = new List<Items>();

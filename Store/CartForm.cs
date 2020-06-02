@@ -54,7 +54,14 @@ namespace Store
 
             for(int i = 0; i < items.Count; i++)
             {
-                items_id += items[i].getID() + ",";
+                if (i < items.Count - 1)
+                {
+                    items_id += items[i].getID() + ",";
+                }
+                else
+                {
+                    items_id += items[i].getID();
+                }
             }
 
             db.AddOrder(items_id, userID);

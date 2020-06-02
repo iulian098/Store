@@ -437,7 +437,6 @@ namespace Store
                 this.CloseConnection();
             }
 
-
         }
 
         #endregion
