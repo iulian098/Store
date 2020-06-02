@@ -34,13 +34,14 @@
             this.Username = new System.Windows.Forms.TextBox();
             this.Password = new System.Windows.Forms.TextBox();
             this.LoginBtn = new System.Windows.Forms.Button();
+            this.RememberCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // RegisterBtn
             // 
             this.RegisterBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RegisterBtn.Location = new System.Drawing.Point(67, 126);
+            this.RegisterBtn.Location = new System.Drawing.Point(67, 154);
             this.RegisterBtn.Name = "RegisterBtn";
             this.RegisterBtn.Size = new System.Drawing.Size(93, 23);
             this.RegisterBtn.TabIndex = 0;
@@ -85,7 +86,7 @@
             // 
             this.LoginBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoginBtn.Location = new System.Drawing.Point(51, 97);
+            this.LoginBtn.Location = new System.Drawing.Point(51, 125);
             this.LoginBtn.Name = "LoginBtn";
             this.LoginBtn.Size = new System.Drawing.Size(125, 23);
             this.LoginBtn.TabIndex = 5;
@@ -93,11 +94,23 @@
             this.LoginBtn.UseVisualStyleBackColor = true;
             this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
             // 
+            // RememberCheckbox
+            // 
+            this.RememberCheckbox.AutoSize = true;
+            this.RememberCheckbox.Location = new System.Drawing.Point(12, 90);
+            this.RememberCheckbox.Name = "RememberCheckbox";
+            this.RememberCheckbox.Size = new System.Drawing.Size(94, 17);
+            this.RememberCheckbox.TabIndex = 6;
+            this.RememberCheckbox.Text = "Remember me";
+            this.RememberCheckbox.UseVisualStyleBackColor = true;
+            this.RememberCheckbox.CheckedChanged += new System.EventHandler(this.RememberCheckbox_CheckedChanged);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(226, 161);
+            this.ClientSize = new System.Drawing.Size(226, 189);
+            this.Controls.Add(this.RememberCheckbox);
             this.Controls.Add(this.LoginBtn);
             this.Controls.Add(this.Password);
             this.Controls.Add(this.Username);
@@ -125,5 +138,6 @@
         private System.Windows.Forms.TextBox Username;
         private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.Button LoginBtn;
+        private System.Windows.Forms.CheckBox RememberCheckbox;
     }
 }

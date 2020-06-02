@@ -153,6 +153,10 @@ namespace Store
                     this.connection.Close();
                 }
             }
+            else
+            {
+                return false;
+            }
 
             if (password == pwd)
             {
@@ -160,6 +164,8 @@ namespace Store
             }
             else
             {
+                MessageBox.Show("Wrong username or password", "Try again!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return false;
             }
 

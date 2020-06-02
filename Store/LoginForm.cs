@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Store
@@ -29,6 +22,8 @@ namespace Store
         {
             if(db.Login(Username.Text, Password.Text))
             {
+                if (MainForm.AutoLogin)
+                    MainForm.SaveData(Username.Text, Password.Text);
                 MainForm.LoggedIn(Username.Text);
                 this.Close();
             }
@@ -37,6 +32,11 @@ namespace Store
         private void LoginForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void RememberCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            MainForm.AutoLogin = RememberCheckbox.Checked;
         }
     }
 }

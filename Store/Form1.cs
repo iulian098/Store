@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Security.Cryptography;
 
 
 namespace Store
 {
     public partial class Form1 : Form
     {
-
+        public bool AutoLogin;
         public List<Items> CartItems = new List<Items>();
 
         public string username;
@@ -34,6 +36,15 @@ namespace Store
             AddPanels();
             Console.WriteLine(panels.Count);
             o.mainForm = this;
+
+            string[] userData = LoadData();
+
+            if (userData != null && Convert.ToBoolean(userData[0]) && db.Login(userData[1], userData[2]))
+            {
+                Console.WriteLine("Auto logged in.");
+                LoggedIn(userData[1]);
+            }
+            
         }
 
         private void Form1_ResizeEnd(object sender, EventArgs e)
@@ -105,6 +116,8 @@ namespace Store
             LoginBtn.Enabled = true;
             LogoutBtn.Visible = false;
             AdminBtn.Visible = false;
+            AutoLogin = false;
+            SaveData("", "");
         }
 
         #endregion
@@ -136,6 +149,29 @@ namespace Store
         private void RefreshBtn_Click(object sender, EventArgs e)
         {
             RefreshItems();
+        }
+
+        public void SaveData(string user, string password)
+        {
+            string CurrentDirectory = Directory.GetCurrentDirectory();
+            string _file = CurrentDirectory + "/data.dat";
+
+            File.WriteAllText(_file, AutoLogin + "," + user + "," + password);
+        }
+
+        public string[] LoadData()
+        {
+            string CurrentDirectory = Directory.GetCurrentDirectory();
+            string _file = CurrentDirectory + "/data.dat";
+            if (File.Exists(_file))
+            {
+                string _FileData = File.ReadAllText(_file);
+                string[] _data = _FileData.Split(',');
+                foreach(string d in _data)
+                    Console.WriteLine(d);
+                return _data;
+            }
+            return null;
         }
     }
 }

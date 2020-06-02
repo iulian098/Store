@@ -24,6 +24,10 @@ namespace Store
             {
                 MessageBox.Show("Please fill all fields.");
                 return;
+            }else if (!Email.Text.Contains("@") || !Email.Text.Contains("."))
+            {
+                MessageBox.Show("Please enter an valid email address.");
+                return;
             }
 
             db.Register(Username.Text, Password.Text, Email.Text, Address.Text);
@@ -31,6 +35,11 @@ namespace Store
             MessageBox.Show("Now you can login");
 
             this.Close();
+        }
+
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
