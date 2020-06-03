@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -10,6 +11,7 @@ namespace Store
 {
     class Database
     {
+        public static Database instance;
         MySqlConnection connection;
 
         private string server;
@@ -36,6 +38,7 @@ namespace Store
                                 database + ";" + "UID=" + user + ";" + "PWD=" + password + ";PORT=3306";
 
             connection = new MySqlConnection(connectionString);
+            instance = this;
         }
 
         private bool OpenConnection()
@@ -133,7 +136,7 @@ namespace Store
         public bool Login(string username, string password)
         {
             string pwd = "";
-
+            string banned = "0";
             string query = "SELECT * FROM users WHERE username='" + username + "'";
 
             if (checkUsername(username))
@@ -146,6 +149,7 @@ namespace Store
                     while (reader.Read())
                     {
                         pwd = reader["password"] + "";
+                        banned = reader["ban"] + "";
                     }
 
                     reader.Close();
@@ -158,7 +162,12 @@ namespace Store
                 return false;
             }
 
-            if (password == pwd)
+            if(banned == "1")
+            {
+                MessageBox.Show("You are banned!", "Ban", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if(password == pwd)
             {
                 return true;
             }
@@ -253,6 +262,8 @@ namespace Store
                                 database + ";" + "UID=" + user + ";" + "PWD=" + password + ";PORT=3306";
 
             connection = new MySqlConnection(connectionString);
+
+            Console.WriteLine("Logged in as admin");
         }
 
 
@@ -383,6 +394,34 @@ namespace Store
             }
         }
 
+        public void BanUser(string username, byte ban)
+        {
+            string query = "UPDATE users SET ban=" + ban + " WHERE username='" + username + "';";
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+            }
+        }
+
+        public void RemoveUser(string username)
+        {
+            string query = "DELETE FROM users WHERE username='" + username + "'";
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+            }
+        }
+
         #endregion
 
         #region GetItems
@@ -411,6 +450,46 @@ namespace Store
                     items[2].Add(reader["price"] + "");
                     items[3].Add(reader["image"] + "");
                     items[4].Add(reader["quantity"] + "");
+                }
+
+                reader.Close();
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+
+                return items;
+            }
+            else
+            {
+                return items;
+            }
+        }
+
+        public List<string> getUsers()
+        {
+            string query = "SELECT username,ban from users";
+
+            List<string> items = new List<string>();
+
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string itm="";
+                    if (reader["ban"] + "" == "0" || reader["ban"] + "" == "")
+                    {
+                        itm = reader[0] + "";
+                    }else if(reader["ban"] + "" == "1")
+                    {
+                        itm = reader[0] + " (Banned)";
+                    }
+                    
+                    items.Add(itm);
                 }
 
                 reader.Close();
