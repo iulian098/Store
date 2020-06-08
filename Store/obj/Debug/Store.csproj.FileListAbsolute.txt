@@ -35,3 +35,5 @@ C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.AdminPanel.reso
 C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.AddProduct.resources
 C:\Users\KoKo\source\repos\iulian098\Store\Store\obj\Debug\Store.ItemsPanel.resources
 C:\Users\KoKo\source\repos\iulian098\Store\Store\obj\Debug\Store.UsersPanel.resources
+C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.OrdersForm.resources
+C:\Users\KoKo\Source\Repos\iulian098\Store\Store\obj\Debug\Store.OrderData.resources

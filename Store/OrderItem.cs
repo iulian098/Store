@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Store
 {
-    class OrderItem
+    public class OrderItem
     {
         string id, user_id, items_id;
         

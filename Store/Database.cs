@@ -488,9 +488,9 @@ namespace Store
 
         #region GetItems
 
-        public List<string>[] GetItems()
+       /* public List<string>[] GetItems()
         {
-            string query = "SELECT * from items";
+            string query = "SELECT * FROM items";
 
             List<string>[] items = new List<string>[5];
             items[0] = new List<string>();
@@ -526,11 +526,49 @@ namespace Store
             {
                 return items;
             }
+        }*/
+
+        public List<Items> GetItems()
+        {
+            string query = "SELECT * FROM items";
+
+            List<Items> items = new List<Items>();
+
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Items item = new Items(reader["id"] + "", reader["name"] + "", reader["price"] + "", reader["image"] + "", reader["quantity"] + "");
+                    /*items[0].Add(reader["id"] + "");
+                    items[1].Add(reader["name"] + "");
+                    items[2].Add(reader["price"] + "");
+                    items[3].Add(reader["image"] + "");
+                    items[4].Add(reader["quantity"] + "");*/
+
+                    items.Add(item);
+                }
+
+                reader.Close();
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+
+                return items;
+            }
+            else
+            {
+                return items;
+            }
         }
 
         public List<string> getUsers()
         {
-            string query = "SELECT username,ban from users";
+            string query = "SELECT username,ban FROM users";
 
             List<string> items = new List<string>();
 
@@ -567,6 +605,39 @@ namespace Store
                 return items;
             }
         }
+
+        public List<UserData> getUsersData()
+        {
+            string query = "SELECT * FROM users";
+
+            List<UserData> items = new List<UserData>();
+
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    UserData user = new UserData(Convert.ToInt32(reader["id"] + ""), reader["username"] + "", reader["email"] + "", reader["address"] + "");
+
+                    items.Add(user);
+                }
+
+                reader.Close();
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+
+                return items;
+            }
+            else
+            {
+                return items;
+            }
+        }
         #endregion
 
         #region Orders
@@ -584,6 +655,41 @@ namespace Store
                 this.CloseConnection();
             }
 
+        }
+
+        public List<OrderItem> GetOrder()
+        {
+            string query = "SELECT * FROM orders";
+
+            List<OrderItem> items = new List<OrderItem>();
+           
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    OrderItem orderItem = new OrderItem(reader["id"] + "", reader["userid"] + "", reader["itemid"] + "");
+
+                    items.Add(orderItem);
+
+                    //items.Add(reader["id"] + "");
+
+                }
+
+                reader.Close();
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+
+                return items;
+            }
+            else
+            {
+                return items;
+            }
         }
 
         #endregion

@@ -23,11 +23,6 @@ namespace Store
             InitializeComponent();
         }
 
-        private void CartForm_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         public void SetItems(List<Items> list, Form1 f, string _username)
         {
             items = list;
@@ -40,7 +35,7 @@ namespace Store
 
         public void SetTotalPrice(int price)
         {
-            TotalPrice.Text = "Total price: " + cart.GetTotalPrice();
+            TotalPrice.Text = "Total price: " + cart.GetTotalPrice() + "$";
         }
 
         public void RemoveItem(Items item)
@@ -68,8 +63,9 @@ namespace Store
             this.Close();
         }
 
+        private void CartForm_Load(object sender, EventArgs e)
+        {
 
-
-        
+        }
     }
 }

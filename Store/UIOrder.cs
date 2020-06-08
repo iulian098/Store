@@ -72,9 +72,19 @@ namespace Store
             PictureBox img = new PictureBox();
             Label _name = new Label();
             Label _price = new Label();
-            
+
             //Add button
-            btn.Text = "Add to cart";
+            if (Convert.ToInt32(quantity) > 0)
+            {
+                btn.Text = "Add to cart";
+                btn.ForeColor = Color.Black;
+            }
+            else
+            {
+                btn.ForeColor = Color.Red;
+                btn.Enabled = false;
+                btn.Text = "Out of stock";
+            }
             btn.Size = new Size(panel.Size.Width/2, 25);
             btn.Anchor = AnchorStyles.Bottom;
             btn.Location = new Point((panel.Width/2)-(btn.Width/2),panel.Height - btn.Height);
@@ -92,7 +102,7 @@ namespace Store
             img.ImageLocation = image;
             img.Size = new Size(panel.Width/2, panel.Height - btn.Height);
             img.Location = new Point(panel.Width/2 - img.Width/2, 0);
-            img.SizeMode = PictureBoxSizeMode.StretchImage;
+            img.SizeMode = PictureBoxSizeMode.Zoom;
 
             //Add name
             _name.Size = new Size(panel.Width / 2, 15);
@@ -104,7 +114,7 @@ namespace Store
             //Add price
             _price.Size = new Size(panel.Width / 2, 15);
             _price.Location = new Point(panel.Width / 2 - _name.Width / 2, panel.Height - 40);
-            _price.Text = "Price:" + price;
+            _price.Text = "Price:" + price + "$";
             _price.TextAlign = ContentAlignment.MiddleCenter;
             _price.Anchor = AnchorStyles.Bottom;
 

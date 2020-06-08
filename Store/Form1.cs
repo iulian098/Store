@@ -21,7 +21,7 @@ namespace Store
         public string username;
         Database db = new Database();
 
-        private List<string>[] items;
+        private List<Items> items;
 
         public List<Panel> panels = new List<Panel>();
         UIOrder o = new UIOrder();
@@ -58,14 +58,14 @@ namespace Store
         {
             items = db.GetItems();
 
-            for (int i = 0; i < items[0].Count; i++)
+            for (int i = 0; i < items.Count; i++)
             {
                 Panel p = new Panel();
                 MainPanel.Controls.Add(p);
                 p.Name = "Item" + i;
 
                 panels.Add(p);
-                o.AddItems(p,items[0][i], items[1][i], items[3][i], items[2][i], items[4][i]);
+                o.AddItems(p,items[i].getID(),items[i].getName(), items[i].getImage(), items[i].getPrice(), items[i].getQuantity());
             }
             o.OrderPanels(panels);
         }
@@ -96,6 +96,7 @@ namespace Store
             {
                 User.Text = "User: " + _username + "(Admin)";
                 AdminBtn.Visible = true;
+                OrdersBtn.Visible = true;
             }
             else
             {
@@ -116,6 +117,7 @@ namespace Store
             LoginBtn.Enabled = true;
             LogoutBtn.Visible = false;
             AdminBtn.Visible = false;
+            OrdersBtn.Visible = false;
             AutoLogin = false;
             SaveData("", "");
         }
@@ -172,6 +174,12 @@ namespace Store
                 return _data;
             }
             return null;
+        }
+
+        private void OrdersBtn_Click(object sender, EventArgs e)
+        {
+            OrdersForm ordersForm = new OrdersForm();
+            ordersForm.Show();
         }
     }
 }

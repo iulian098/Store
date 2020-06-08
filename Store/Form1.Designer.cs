@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.MainPanel = new System.Windows.Forms.Panel();
             this.CartBtn = new System.Windows.Forms.Button();
             this.LoginBtn = new System.Windows.Forms.Button();
@@ -35,6 +36,7 @@
             this.LogoutBtn = new System.Windows.Forms.Button();
             this.AdminBtn = new System.Windows.Forms.Button();
             this.RefreshBtn = new System.Windows.Forms.Button();
+            this.OrdersBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MainPanel
@@ -45,13 +47,13 @@
             this.MainPanel.AutoScroll = true;
             this.MainPanel.Location = new System.Drawing.Point(12, 41);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(561, 415);
+            this.MainPanel.Size = new System.Drawing.Size(624, 279);
             this.MainPanel.TabIndex = 0;
             // 
             // CartBtn
             // 
             this.CartBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CartBtn.Location = new System.Drawing.Point(502, 12);
+            this.CartBtn.Location = new System.Drawing.Point(565, 12);
             this.CartBtn.Name = "CartBtn";
             this.CartBtn.Size = new System.Drawing.Size(71, 23);
             this.CartBtn.TabIndex = 1;
@@ -93,7 +95,7 @@
             // AdminBtn
             // 
             this.AdminBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AdminBtn.Location = new System.Drawing.Point(340, 12);
+            this.AdminBtn.Location = new System.Drawing.Point(403, 12);
             this.AdminBtn.Name = "AdminBtn";
             this.AdminBtn.Size = new System.Drawing.Size(75, 23);
             this.AdminBtn.TabIndex = 5;
@@ -105,7 +107,7 @@
             // RefreshBtn
             // 
             this.RefreshBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.RefreshBtn.Location = new System.Drawing.Point(421, 12);
+            this.RefreshBtn.Location = new System.Drawing.Point(484, 12);
             this.RefreshBtn.Name = "RefreshBtn";
             this.RefreshBtn.Size = new System.Drawing.Size(75, 23);
             this.RefreshBtn.TabIndex = 6;
@@ -113,11 +115,24 @@
             this.RefreshBtn.UseVisualStyleBackColor = true;
             this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
             // 
+            // OrdersBtn
+            // 
+            this.OrdersBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.OrdersBtn.Location = new System.Drawing.Point(322, 12);
+            this.OrdersBtn.Name = "OrdersBtn";
+            this.OrdersBtn.Size = new System.Drawing.Size(75, 23);
+            this.OrdersBtn.TabIndex = 7;
+            this.OrdersBtn.Text = "Orders";
+            this.OrdersBtn.UseVisualStyleBackColor = true;
+            this.OrdersBtn.Visible = false;
+            this.OrdersBtn.Click += new System.EventHandler(this.OrdersBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 468);
+            this.ClientSize = new System.Drawing.Size(648, 332);
+            this.Controls.Add(this.OrdersBtn);
             this.Controls.Add(this.RefreshBtn);
             this.Controls.Add(this.AdminBtn);
             this.Controls.Add(this.LogoutBtn);
@@ -125,7 +140,8 @@
             this.Controls.Add(this.LoginBtn);
             this.Controls.Add(this.CartBtn);
             this.Controls.Add(this.MainPanel);
-            this.MinimumSize = new System.Drawing.Size(416, 288);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(545, 288);
             this.Name = "Form1";
             this.Text = "Store";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -144,6 +160,7 @@
         private System.Windows.Forms.Button LogoutBtn;
         private System.Windows.Forms.Button AdminBtn;
         private System.Windows.Forms.Button RefreshBtn;
+        private System.Windows.Forms.Button OrdersBtn;
     }
 }
 
