@@ -14,6 +14,7 @@ namespace Store
     {
         byte ban = 0b0;
         List<string> users = new List<string>();
+        List<string> admins = new List<string>();
         public UsersPanel()
         {
             InitializeComponent();
@@ -49,23 +50,43 @@ namespace Store
                 BanBtn.Text = "Unban";
             else
                 BanBtn.Text = "Ban";
+
+            if (listBox1.SelectedItem.ToString().Contains("(Admin)"))
+                MakeAdmin_Btn.Text = "Remove Admin";
+            else
+                MakeAdmin_Btn.Text = "Make Admin";
         }
 
         private void RefreshUsersList()
         {
             Database.instance.InitializeAdmin();
             users = Database.instance.getUsers();
+            admins = Database.instance.CheckAdmin();
             listBox1.Items.Clear();
             foreach (string s in users)
             {
                 Console.WriteLine("User : " + s);
-                listBox1.Items.Add(s);
+                if (admins.Contains(s)) {
+                    listBox1.Items.Add(s + " (Admin)");
+                }
+                else
+                {
+                    listBox1.Items.Add(s);
+                }
+                
+                
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void MakeAdmin_Btn_Click(object sender, EventArgs e)
         {
+            RefreshUsersList();
+        }
 
+        private void Remove_Btn_Click(object sender, EventArgs e)
+        {
+            Database.instance.RemoveUser(listBox1.SelectedItem.ToString().Replace(" (Admin)", "").Replace(" (Banned)", ""));
+            RefreshUsersList();
         }
     }
 }

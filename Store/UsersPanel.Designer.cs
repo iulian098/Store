@@ -31,7 +31,8 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BanBtn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Remove_Btn = new System.Windows.Forms.Button();
+            this.MakeAdmin_Btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -43,7 +44,7 @@
             this.listBox1.Location = new System.Drawing.Point(5, 26);
             this.listBox1.Margin = new System.Windows.Forms.Padding(0);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(268, 264);
+            this.listBox1.Size = new System.Drawing.Size(268, 290);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -60,7 +61,7 @@
             // 
             this.BanBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BanBtn.Location = new System.Drawing.Point(12, 299);
+            this.BanBtn.Location = new System.Drawing.Point(12, 353);
             this.BanBtn.Name = "BanBtn";
             this.BanBtn.Size = new System.Drawing.Size(253, 23);
             this.BanBtn.TabIndex = 2;
@@ -68,24 +69,37 @@
             this.BanBtn.UseVisualStyleBackColor = true;
             this.BanBtn.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // Remove_Btn
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.Remove_Btn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(12, 328);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(253, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Remove";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.Remove_Btn.Location = new System.Drawing.Point(12, 382);
+            this.Remove_Btn.Name = "Remove_Btn";
+            this.Remove_Btn.Size = new System.Drawing.Size(253, 23);
+            this.Remove_Btn.TabIndex = 3;
+            this.Remove_Btn.Text = "Remove";
+            this.Remove_Btn.UseVisualStyleBackColor = true;
+            this.Remove_Btn.Click += new System.EventHandler(this.Remove_Btn_Click);
+            // 
+            // MakeAdmin_Btn
+            // 
+            this.MakeAdmin_Btn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MakeAdmin_Btn.Location = new System.Drawing.Point(12, 324);
+            this.MakeAdmin_Btn.Name = "MakeAdmin_Btn";
+            this.MakeAdmin_Btn.Size = new System.Drawing.Size(253, 23);
+            this.MakeAdmin_Btn.TabIndex = 4;
+            this.MakeAdmin_Btn.Text = "Make Admin";
+            this.MakeAdmin_Btn.UseVisualStyleBackColor = true;
+            this.MakeAdmin_Btn.Click += new System.EventHandler(this.MakeAdmin_Btn_Click);
             // 
             // UsersPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(277, 363);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(277, 417);
+            this.Controls.Add(this.MakeAdmin_Btn);
+            this.Controls.Add(this.Remove_Btn);
             this.Controls.Add(this.BanBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox1);
@@ -102,6 +116,7 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BanBtn;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Remove_Btn;
+        private System.Windows.Forms.Button MakeAdmin_Btn;
     }
 }

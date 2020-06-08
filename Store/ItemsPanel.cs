@@ -12,8 +12,6 @@ namespace Store
 {
     public partial class ItemsPanel : Form
     {
-
-        Database db = new Database();
         List<Items> items = new List<Items>();
         Items selectedItem;
         int selectedIndex;
@@ -25,20 +23,20 @@ namespace Store
         private void ItemsPanel_Load(object sender, EventArgs e)
         {
             
-            db.InitializeAdmin();
+            Database.instance.InitializeAdmin();
             RefreshItems();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            db.UpdateItems(selectedItem.getID(), itemName.Text, Price.Text, Stock.Text);
+            Database.instance.UpdateItems(selectedItem.getID(), itemName.Text, Price.Text, Stock.Text);
             RefreshItems();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedItem = items[listBox1.SelectedIndex];
             selectedIndex = listBox1.SelectedIndex;
+            selectedItem = items[listBox1.SelectedIndex];
             itemName.Text = selectedItem.getName();
             Price.Text = selectedItem.getPrice();
             Stock.Text = selectedItem.getQuantity();
@@ -49,7 +47,7 @@ namespace Store
         {
             items.Clear();
             listBox1.Items.Clear();
-            items = db.GetAdminItems();
+            items = Database.instance.GetAdminItems();
 
             foreach (Items item in items)
             {
@@ -62,7 +60,7 @@ namespace Store
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            db.RemoveItems(selectedItem.getID());
+            Database.instance.RemoveItems(selectedItem.getID());
             RefreshItems();
         }
 

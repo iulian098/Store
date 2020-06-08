@@ -108,6 +108,68 @@ namespace Store
             }
         }
 
+        public void MakeAdmin(string username)
+        {
+            string query = "INSERT INTO admins (username) VALUES('" + username + "')";
+
+            //open connection
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+            }
+        }
+
+        public void RemoveAdmin(string username)
+        {
+            string query = "DELETE FROM admins WHERE username='" + username + "'";
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+            }
+        }
+
+        public List<string> CheckAdmin()
+        {
+            string query = "SELECT username FROM admins";
+
+            List<string> items = new List<string>();
+
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string itm = reader[0] + "";
+
+                    items.Add(itm);
+                }
+
+                reader.Close();
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+
+                return items;
+            }
+            else
+            {
+                return items;
+            }
+        }
+
         #endregion
 
         #region Login/Register
@@ -303,7 +365,7 @@ namespace Store
 
                 while (reader.Read())
                 {
-                    Items item = new Items(reader["name"] + "", reader["price"] + "", reader["image"] + "", reader["quantity"] + "", reader["id"] + "");
+                    Items item = new Items(reader["id"] + "", reader["name"] + "", reader["price"] + "", reader["image"] + "", reader["quantity"] + "");
                     items.Add(item);
                 }
 
