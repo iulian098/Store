@@ -29,12 +29,26 @@ namespace Store
 
         void LoadingData()
         {
+            Database.instance.InitializeAdmin();
             users = Database.instance.getUsersData();
             orders = Database.instance.getOrders();
 
             foreach(OrderItem od in orders)
             {
-                listBox1.Items.Add(od.getID() + " | " + od.getItemsID());
+                listBox1.Items.Add("ID: " + od.getID());
+            }
+        }
+
+        public void RefreshOrders()
+        {
+            listBox1.Items.Clear();
+
+            users = Database.instance.getUsersData();
+            orders = Database.instance.getOrders();
+
+            foreach (OrderItem od in orders)
+            {
+                listBox1.Items.Add("ID: " + od.getID());
             }
         }
 
@@ -42,6 +56,7 @@ namespace Store
         {
             OrderData orderData = new OrderData();
             orderData.Init(selectedUser, selectedOrder);
+            orderData.ordersForm = this;
             orderData.Show();
         }
 

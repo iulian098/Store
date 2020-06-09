@@ -411,6 +411,20 @@ namespace Store
             }
         }
 
+        public void UpdateStock(string id, string stock)
+        {
+            string query = "UPDATE items set quantity=" + stock + " WHERE id=" + id;
+            //open connection
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+            }
+        }
+
         public void RemoveItems(string id)
         {
             string query = "DELETE FROM items WHERE id=" + id;
@@ -425,36 +439,7 @@ namespace Store
             }
         }
 
-        public List<OrderItem> getOrders()
-        {
-            List<OrderItem> orders = new List<OrderItem>();
-
-            string query = "SELECT * from orders";
-
-            if (this.OpenConnection() == true)
-            {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    OrderItem item = new OrderItem(reader["id"] + "", reader["userid"] + "", reader["itemid"] + "");
-                    orders.Add(item);
-                }
-
-                reader.Close();
-
-                cmd.ExecuteNonQuery();
-
-                this.CloseConnection();
-
-                return orders;
-            }
-            else
-            {
-                return orders;
-            }
-        }
+        
 
         public void BanUser(string username, byte ban)
         {
@@ -550,6 +535,8 @@ namespace Store
                     items[4].Add(reader["quantity"] + "");*/
 
                     items.Add(item);
+
+                    Console.WriteLine("Item added to list");
                 }
 
                 reader.Close();
@@ -563,6 +550,37 @@ namespace Store
             else
             {
                 return items;
+            }
+        }
+
+        public int GetOrdersCount()
+        {
+            string query = "SELECT * FROM orders";
+
+            int count = 0;
+
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    count++;
+                }
+
+                reader.Close();
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+
+                return count;
+            }
+            else
+            {
+                return count;
             }
         }
 
@@ -642,6 +660,37 @@ namespace Store
 
         #region Orders
 
+        public List<OrderItem> getOrders()
+        {
+            List<OrderItem> orders = new List<OrderItem>();
+
+            string query = "SELECT * from orders";
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    OrderItem item = new OrderItem(reader["id"] + "", reader["userid"] + "", reader["itemid"] + "");
+                    orders.Add(item);
+                }
+
+                reader.Close();
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+
+                return orders;
+            }
+            else
+            {
+                return orders;
+            }
+        }
+
         public void AddOrder(string items_id, int userid)
         {
             string query = "INSERT INTO orders (userid, itemid) VALUES(" + userid + ", '" + items_id + "')";
@@ -689,6 +738,20 @@ namespace Store
             else
             {
                 return items;
+            }
+        }
+
+        public void RemoveOrder(string id)
+        {
+            string query = "DELETE FROM orders WHERE id='" + id + "'";
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
             }
         }
 

@@ -151,6 +151,7 @@
             this.AcceptBtn.TabIndex = 10;
             this.AcceptBtn.Text = "Accept";
             this.AcceptBtn.UseVisualStyleBackColor = true;
+            this.AcceptBtn.Click += new System.EventHandler(this.AcceptBtn_Click);
             // 
             // DeclineBtn
             // 
@@ -161,6 +162,7 @@
             this.DeclineBtn.TabIndex = 11;
             this.DeclineBtn.Text = "Decline";
             this.DeclineBtn.UseVisualStyleBackColor = true;
+            this.DeclineBtn.Click += new System.EventHandler(this.DeclineBtn_Click);
             // 
             // OrderData
             // 

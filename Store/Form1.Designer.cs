@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.MainPanel = new System.Windows.Forms.Panel();
             this.CartBtn = new System.Windows.Forms.Button();
@@ -37,6 +38,7 @@
             this.AdminBtn = new System.Windows.Forms.Button();
             this.RefreshBtn = new System.Windows.Forms.Button();
             this.OrdersBtn = new System.Windows.Forms.Button();
+            this.RefreshOrdersTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // MainPanel
@@ -127,6 +129,11 @@
             this.OrdersBtn.Visible = false;
             this.OrdersBtn.Click += new System.EventHandler(this.OrdersBtn_Click);
             // 
+            // RefreshOrdersTimer
+            // 
+            this.RefreshOrdersTimer.Interval = 1000;
+            this.RefreshOrdersTimer.Tick += new System.EventHandler(this.RefreshOrdersTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +168,7 @@
         private System.Windows.Forms.Button AdminBtn;
         private System.Windows.Forms.Button RefreshBtn;
         private System.Windows.Forms.Button OrdersBtn;
+        private System.Windows.Forms.Timer RefreshOrdersTimer;
     }
 }
 

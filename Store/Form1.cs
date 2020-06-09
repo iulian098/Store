@@ -25,6 +25,7 @@ namespace Store
 
         public List<Panel> panels = new List<Panel>();
         UIOrder o = new UIOrder();
+        int ordersCount;
 
         public Form1()
         {
@@ -97,10 +98,12 @@ namespace Store
                 User.Text = "User: " + _username + "(Admin)";
                 AdminBtn.Visible = true;
                 OrdersBtn.Visible = true;
+                RefreshOrdersTimer.Enabled = true;
             }
             else
             {
                 User.Text = "User: " + _username;
+                RefreshOrdersTimer.Enabled = false;
             }
             User.Visible = true;
             LoginBtn.Visible = false;
@@ -119,6 +122,7 @@ namespace Store
             AdminBtn.Visible = false;
             OrdersBtn.Visible = false;
             AutoLogin = false;
+            RefreshOrdersTimer.Enabled = false;
             SaveData("", "");
         }
 
@@ -180,6 +184,12 @@ namespace Store
         {
             OrdersForm ordersForm = new OrdersForm();
             ordersForm.Show();
+        }
+
+        private void RefreshOrdersTimer_Tick(object sender, EventArgs e)
+        {
+            ordersCount = Database.instance.GetOrdersCount();
+            OrdersBtn.Text = "Orders(" + ordersCount.ToString() + ")";
         }
     }
 }

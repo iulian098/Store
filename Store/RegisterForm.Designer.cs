@@ -113,6 +113,7 @@
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(194, 20);
             this.Password.TabIndex = 7;
+            this.Password.UseSystemPasswordChar = true;
             // 
             // Username
             // 
