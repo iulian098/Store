@@ -25,6 +25,7 @@ namespace Store
 
         public void SetItems(List<Items> list, Form1 f, string _username)
         {
+            mainForm = f;
             items = list;
             username = _username;
             Console.WriteLine("Items in cart : " + items.Count);
@@ -45,22 +46,32 @@ namespace Store
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string items_id = "";
-
-            for(int i = 0; i < items.Count; i++)
+            if (mainForm.LoggedInStatus)
             {
-                if (i < items.Count - 1)
-                {
-                    items_id += items[i].getID() + ",";
-                }
-                else
-                {
-                    items_id += items[i].getID();
-                }
-            }
+                string items_id = "";
 
-            db.AddOrder(items_id, userID);
-            this.Close();
+                for (int i = 0; i < items.Count; i++)
+                {
+                    if (i < items.Count - 1)
+                    {
+                        items_id += items[i].getID() + ",";
+                    }
+                    else
+                    {
+                        items_id += items[i].getID();
+                    }
+                }
+
+                db.AddOrder(items_id, userID);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Please login", "Please login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LoginForm loginForm = new LoginForm();
+                loginForm.MainForm = mainForm;
+                loginForm.Show();
+            }
         }
 
         private void CartForm_Load(object sender, EventArgs e)

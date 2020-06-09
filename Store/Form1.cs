@@ -27,6 +27,8 @@ namespace Store
         UIOrder o = new UIOrder();
         int ordersCount;
 
+        public bool LoggedInStatus;
+
         public Form1()
         {
             InitializeComponent();
@@ -109,6 +111,7 @@ namespace Store
             LoginBtn.Visible = false;
             LoginBtn.Enabled = false;
             LogoutBtn.Visible = true;
+            LoggedInStatus = true;
         }
 
         private void LogoutBtn_Click(object sender, EventArgs e)
@@ -123,6 +126,7 @@ namespace Store
             OrdersBtn.Visible = false;
             AutoLogin = false;
             RefreshOrdersTimer.Enabled = false;
+            LoggedInStatus = false;
             SaveData("", "");
         }
 
