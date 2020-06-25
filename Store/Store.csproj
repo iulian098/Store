@@ -207,7 +207,7 @@
     <Content Include="hnet.com-image.ico" />
     <Content Include="Icons\hnet.com-image.ico" />
     <Content Include="Icons\icons8-online-store-64.png" />
-    <Content Include="UI\Rounded Filled %28500ppu%29.png" />
+    <Content Include="README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

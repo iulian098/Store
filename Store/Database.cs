@@ -36,8 +36,15 @@ namespace Store
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
                                 database + ";" + "UID=" + user + ";" + "PWD=" + password + ";PORT=3306";
+            try
+            {
+                connection = new MySqlConnection(connectionString);
 
-            connection = new MySqlConnection(connectionString);
+            }
+            catch
+            {
+                MessageBox.Show("Database error!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             instance = this;
         }
 
@@ -323,7 +330,15 @@ namespace Store
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
                                 database + ";" + "UID=" + user + ";" + "PWD=" + password + ";PORT=3306";
 
-            connection = new MySqlConnection(connectionString);
+            try
+            {
+                connection = new MySqlConnection(connectionString);
+
+            }
+            catch
+            {
+                MessageBox.Show("Database error!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             Console.WriteLine("Logged in as admin");
         }
@@ -386,7 +401,7 @@ namespace Store
         public void AddItem(string id, string name, string price, string stock, string image)
         {
             string query = "INSERT INTO items VALUES(" + id + ", '" + name + "', " + price + ", '" + image + "', " + stock + ")";
-            //open connection
+
             if (this.OpenConnection() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -400,7 +415,7 @@ namespace Store
         public void UpdateItems(string id, string name, string price, string stock)
         {
             string query = "UPDATE items set name='" + name + "', price=" + price + ", quantity=" + stock + " WHERE id=" + id;
-            //open connection
+
             if (this.OpenConnection() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -414,7 +429,7 @@ namespace Store
         public void UpdateStock(string id, string stock)
         {
             string query = "UPDATE items set quantity=" + stock + " WHERE id=" + id;
-            //open connection
+
             if (this.OpenConnection() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -428,7 +443,7 @@ namespace Store
         public void RemoveItems(string id)
         {
             string query = "DELETE FROM items WHERE id=" + id;
-            //open connection
+
             if (this.OpenConnection() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -528,11 +543,6 @@ namespace Store
                 while (reader.Read())
                 {
                     Items item = new Items(reader["id"] + "", reader["name"] + "", reader["price"] + "", reader["image"] + "", reader["quantity"] + "");
-                    /*items[0].Add(reader["id"] + "");
-                    items[1].Add(reader["name"] + "");
-                    items[2].Add(reader["price"] + "");
-                    items[3].Add(reader["image"] + "");
-                    items[4].Add(reader["quantity"] + "");*/
 
                     items.Add(item);
 
@@ -630,7 +640,6 @@ namespace Store
 
             List<UserData> items = new List<UserData>();
 
-
             if (this.OpenConnection() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -722,8 +731,6 @@ namespace Store
                     OrderItem orderItem = new OrderItem(reader["id"] + "", reader["userid"] + "", reader["itemid"] + "");
 
                     items.Add(orderItem);
-
-                    //items.Add(reader["id"] + "");
 
                 }
 
