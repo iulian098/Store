@@ -208,6 +208,7 @@
     <Content Include="Icons\hnet.com-image.ico" />
     <Content Include="Icons\icons8-online-store-64.png" />
     <Content Include="README.txt" />
+    <Content Include="MySQL_Database.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
